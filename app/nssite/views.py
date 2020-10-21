@@ -12,19 +12,19 @@ from .forms import RegistrationDomain
 
 @nssite.route('/nslist')
 def nslist():
-    ns_list = Domain.query.all()
-    # print(type(ns_list))
-    # print(ns_list)
-    # for i in ns_list:
-    #     print(i.name,i.value)
+    ns_list = Domain.query.filter_by(environment=2).all()
+    print(type(ns_list))
+    print(ns_list)
+    for i in ns_list:
+        print(i.name,i.value)
     return render_template('nssite/nslist.html',ns_list=ns_list)
 
 @nssite.route('/register',methods=['GET','POST'])
 def register():
     form = RegistrationDomain()
     if form.validate_on_submit():
-        domain = Domain(name=form.name.data,value=form.value.data)
+        domain = Domain(name=form.name.data,value=form.value.data,environment=form.environment.data)
         db.session.add(domain)
         db.session.commit()
-        flash('一组域名及解析已添加')
+        flash('成功增加一组域名及解析！')
     return render_template('nssite/register.html',form=form)

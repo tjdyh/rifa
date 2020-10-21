@@ -185,3 +185,4 @@ class Domain(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(64),unique=True)
     value = db.Column(db.String(1024),nullable=False)
+    environment = db.Column(db.Integer)
