@@ -126,3 +126,5 @@ dmypy.json
 
 /.env
 /data-dev.sqlite
+.idea/inspectionProfiles/
+.idea/workspace.xml

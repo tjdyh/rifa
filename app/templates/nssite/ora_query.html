@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Oralce - Query{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <p>表空间利用率，我们的数据库数据文件是开启自动扩展的，每一个数据文件最大可以扩展为32g，此结果中，used（%）为目前表空间的使用率，v_used(%)为表空间中所有数据文件都扩展到最大值时，表空间的使用率，在系统空间(rac架构时，关注asm空间）足够的时候，我们应该关注的是v_used，当v_used达到90%以上的时候，需要为该表空间添加数据文件</p>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>表空间名</th>
+            <th>总量（M）</th>
+            <th>空闲（M）</th>
+            <th>使用量（M）</th>
+            <th>使用率（%）</th>
+            <th>实际使用率（%）</th>
+            <th>最大总量（M）</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in ora_list %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>{{ item[5] }}</td>
+            <td>{{ item[6] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    <br>
+    <p>备份情况，非常详细。ps：命令列耗费的时间不需要计算</p>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>备份状态</th>
+            <th>备份类型</th>
+            <th>总的开始时间</th>
+            <th>总的结束时间</th>
+            <th>耗时（分钟）</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in backup_list %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

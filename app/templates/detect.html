@@ -21,7 +21,9 @@
     <p>
         {% if user == current_user %}
 {#        <a class="btn btn-default" href="{{ url_for('.edit_profile') }}">Edit Profile</a>#}
-        <a class="btn btn-default" href="{{ url_for('nssite.register') }}">注册域名</a>
+            <p><a href="{{ url_for('nssite.ora_query') }}" target="_blank">巡检yianju库</a></p>
+            <p><a href="{{ url_for('nssite.fbs_query') }}" target="_blank">巡检fbs库</a></p>
+            <p><a href="{{ url_for('nssite.dg_query') }}" target="_blank">巡检DG状态</a></p>
         {% endif %}
         {% if current_user.is_administrator() %}
         <a class="btn btn-danger" href="{{ url_for('.edit_profile_admin', id=user.id) }}">Edit Profile [Admin]</a>

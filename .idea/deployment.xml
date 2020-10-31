@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="root@120.79.172.218:50008">
+        <serverdata>
+          <mappings>
+            <mapping deploy="rifa" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="root@192.168.88.71:22">
         <serverdata>
           <mappings>

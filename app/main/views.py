@@ -20,6 +20,11 @@ def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     return render_template('user.html', user=user)
 
+@main.route('/detect/<username>')
+def detect(username):
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('detect.html', user=user)
+
 @main.route('/edit-profile',methods=['GET','POST'])
 @login_required
 def edit_profile():
